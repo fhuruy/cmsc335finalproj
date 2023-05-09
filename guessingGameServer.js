@@ -37,17 +37,22 @@ process.stdin.on("readable", function () {
   }
 });
 
-const userName = process.env.MONGO_DB_USERNAME;
+/*const userName = process.env.MONGO_DB_USERNAME;
 const password = process.env.MONGO_DB_PASSWORD;
 const db = process.env.MONGO_DB_NAME;
-const collection = process.env.MONGO_COLLECTION;
+const collection = process.env.MONGO_COLLECTION;*/
+
+const userName = "fhuruy";
+const password = "spr2023testudo";
+const db = "Users";
+const collection = "accountInfo";
 
  /* Our database and collection */
  const databaseAndCollection = {db: db, collection: collection};
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = `mongodb+srv://fhuruy:spr2023testudo@cluster0.bcvsvdg.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://${userName}:${password}@cluster0.bcvsvdg.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 async function insertApplication(client, databaseAndCollection, newApp) {
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newApp);
