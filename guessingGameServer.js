@@ -1,5 +1,5 @@
 const path = require("path");
-require("dotenv").config({ path: path.resolve(__dirname, 'credentials/.env') }) 
+require("dotenv");
 
 const express = require("express");   /* Accessing express module */
 const app = express();  /* app is a request handler function */
@@ -47,7 +47,7 @@ const collection = process.env.MONGO_COLLECTION;
 
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
-const uri = `mongodb+srv://${userName}:${password}@cluster0.bcvsvdg.mongodb.net/?retryWrites=true&w=majority`;
+const uri = `mongodb+srv://fhuruy:spr2023testudo@cluster0.bcvsvdg.mongodb.net/?retryWrites=true&w=majority`;
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 async function insertApplication(client, databaseAndCollection, newApp) {
     const result = await client.db(databaseAndCollection.db).collection(databaseAndCollection.collection).insertOne(newApp);
