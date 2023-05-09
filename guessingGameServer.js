@@ -13,7 +13,7 @@ if (process.argv.length != 2) {
     process.exit(1); 
 }
 
-const portNumber = 4000;
+const portNumber = 5001;
 let player = "";
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, 'public')));
