@@ -8,7 +8,7 @@ const bodyParser = require("body-parser");
 const fs = require("fs");
 process.stdin.setEncoding("utf8");
 
-if (process.argv.length != 3) {
+if (process.argv.length != 2) {
     process.stdout.write(`Usage guessingGameServer.js portNumber \n`);
     process.exit(1); 
 }
