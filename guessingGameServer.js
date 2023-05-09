@@ -9,7 +9,7 @@ const fs = require("fs");
 process.stdin.setEncoding("utf8");
 
 if (process.argv.length != 2) {
-    process.stdout.write(`Usage guessingGameServer.js portNumber \n`);
+    process.stdout.write(`Usage guessingGameServer.js \n`);
     process.exit(1); 
 }
 
