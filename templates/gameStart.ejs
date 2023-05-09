@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Game</title>
+	<link rel="stylesheet" href="/images/style3.css">
+</head>
+
+<body>
+	<h1>Guessing Game</h1>
+	<div id="images">
+		<img src="/images/image1.jpg" width="240" height= "240"alt="cat winking">
+		<img src="/images/image2.jpg" width="240" height= "240"alt="cat sticking tongue out">
+		<img src="/images/image3.jpg" width="240" height= "240"alt="cat with all its dawgs">
+		<img src="/images/image4.jpg" width="240" height= "240"alt="cat taking group selfie on tree stump">
+	</div>
+	<br>
+	<br>
+	<form action=<%- link %> method="post">
+        <fieldset>
+            <strong>Please choose a number (1-4) corresponding to the order in which the images are shown above:</strong> <br>
+			<input id="guess" type="text" name="answer" minlength="1" maxlength="1"> <br>
+        </fieldset> 
+		<br>
+		<div id="buttons">
+			<input type="reset" value="Clear"> <input id="submit-btn" type="submit" value="Submit Guess" onclick="incrementCount()">
+		</div>
+		<br>
+    </form>
+	<br>
+	
+	
+	<a id="home" href="/" onclick="return confirm('Are you sure you want to go back to the home page?\nThe game will exit and you will need to login again.');">HOME PAGE</a>
+	
+</body>
+
+</html>

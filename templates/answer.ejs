@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" />
+	<title>Game</title>
+    <link rel="stylesheet" href="/images/style5.css">
+</head>
+
+<body>
+    <h1><%- correct %></h1>
+    <div id="info">
+        <%- infoAndImages %>
+        <br><br>
+        <strong>Your current balance is: <%- balance %></strong>
+    </div>
+    <br>
+    <a class="links" href="/gameStart">Play Again</a>
+	<br>
+    <br>
+	<a class="links" href="/" onclick=" confirmClearLocalStorage()">HOME PAGE</a>
+
+    <script>
+        function confirmClearLocalStorage() {
+ 			 if (confirm("Are you sure you want to go back to the home page?\nThe game will exit and you will need to login again.")) {
+    			localStorage.setItem("count", 1);
+  			}
+		}
+
+    </script>
