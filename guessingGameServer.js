@@ -20,7 +20,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
 app.listen(portNumber);
-console.log(`Web server started and running at http://localhost:${portNumber}`);
+console.log(`Web server started and running at https://vast-lime-buffalo-coat.cyclic.app`);
 const url = `https://vast-lime-buffalo-coat.cyclic.app`;
 const prompt = "Type stop to shutdown the server: ";
 process.stdout.write(prompt);
@@ -211,20 +211,13 @@ app.post("/answer", async (request, response) => {
                     infoAndImages: ``,
                     balance: bal};
         } else {
-            //let bal = await lookUpBalance(client, databaseAndCollection, currUser);
             if (userAnswer === actualAnswer) {
 
                 resp += `<h3>The image you correctly guessed was (Number ${actualAnswer}):</h3><br>`;
                 let image = `/images/image` + `${userAnswer}` + `.jpg`;
                 resp += `<img src='${image}'width="220" height= "220"'>`;
-                /*
-                vars = {correct: `Correct! You have great intuition!`,
-                        infoAndImages: resp,
-                        balance: `<strong>Your current balance is still: <em>${bal}</em></strong>`}; */
                 await updateBalance(client, databaseAndCollection, player, 1);
                 bal = await lookUpBalance(client, databaseAndCollection, player);
-                
-              
                 vars = {correct: `Correct! You have great intuition!`,
                         infoAndImages: resp,
                         balance: bal};
@@ -236,10 +229,6 @@ app.post("/answer", async (request, response) => {
                 resp += `<img src='${actualImage}'width="220" height= "220"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                 let userImage = `/images/image` + `${userAnswer}` + `.jpg`;
                 resp += `<img src='${userImage}'width="220" height= "220"'>`;
-                //let newbal = Number(bal) + 1;
-                /*vars = {correct:`Sorry you were incorrect, your intuition could use some work :( `,
-                        infoAndImages: resp,
-                        balance: `Congratulations, your new balance is: <em>${newbal}</em>`}; */
                 vars = {correct:`Sorry you were incorrect, your intuition could use some work ): `,
                         infoAndImages: resp,
                         balance: bal};
