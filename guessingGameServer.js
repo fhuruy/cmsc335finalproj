@@ -133,18 +133,20 @@ async function lookUpOneEntry(client, databaseAndCollection, userName) {
 let currUser = null;
 app.get("/", (request, response) => {
     currUser = null;
+    player = "";
     response.render("guessingGame", {});
 });
 
 app.get("/login", (request, response) => {
     let link = url + `/loggedin`; 
+    currUser = null;
+    player = "";
     let vars = {link: link};
     response.render("login", vars);
 });
 
 app.post("/loggedin", async (request, response) => {
     const userName = request.body.username;
-    currUser = userName;
     const passWord = request.body.password;
     let vars;
     try {
@@ -153,6 +155,7 @@ app.post("/loggedin", async (request, response) => {
         let passW = await lookUpPassword(client, databaseAndCollection, passWord);
         if (user && passW) {
             player = userName;
+            currUser = userName;
             vars = {issue: `Welcome Back!`, 
                     loggedin: `Logged in as <em>${user.username}</em> with a current balance of <em>${user.balance}</em>`,
                     redirect:`<a href='/gameStart'>Start Game</a>`}; 
@@ -171,6 +174,7 @@ app.post("/loggedin", async (request, response) => {
 
 app.get("/create", (request, response) => {
     let link = url + `/created`; 
+    player = "";
     let vars = {link: link};
     response.render("create", vars);
 });
@@ -178,7 +182,6 @@ app.get("/create", (request, response) => {
 app.post("/created", async (request, response) => {
     let vars;
     let name = request.body.username;
-    currUser = name;
     let pass = request.body.password;
     let user = await lookUpUsername(client, databaseAndCollection, name);
     if (user) {
