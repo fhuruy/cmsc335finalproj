@@ -200,13 +200,7 @@ app.post("/answer", async (request, response) => {
     let userAnswer = Number(request.body.answer);
     let resp = "";
     let bal = await lookUpBalance(client, databaseAndCollection, player)
-   
-   vars = {correct: `You entered a value that didn't correspond to an image. Please try again.`,
-                    infoAndImages: `yolo`,
-                    balance: `lol`};
-    
     if (currUser) {
-        /*
         if (userAnswer < 1 || userAnswer > 4 || Number.isNaN(userAnswer)) {
             vars = {correct: `You entered a value that didn't correspond to an image. Please try again.`,
                     infoAndImages: ``,
@@ -235,7 +229,6 @@ app.post("/answer", async (request, response) => {
                         balance: bal};
             }
         }
-        */
         response.render("answer", vars);
     }
     
