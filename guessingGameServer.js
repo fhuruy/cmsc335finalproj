@@ -203,8 +203,8 @@ app.post("/answer", async (request, response) => {
     let actualAnswer = Math.ceil(Math.random() * 4);
     let userAnswer = Number(request.body.answer);
     let resp = "";
-    //let bal = await lookUpBalance(client, databaseAndCollection, player)
-    let bal = 1
+    let bal = await lookUpBalance(client, databaseAndCollection, player)
+   
    
     if (currUser) {
         if (userAnswer < 1 || userAnswer > 4 || Number.isNaN(userAnswer)) {
@@ -217,8 +217,8 @@ app.post("/answer", async (request, response) => {
                 resp += `<h3>The image you correctly guessed was (Number ${actualAnswer}):</h3><br>`;
                 let image = `/images/image` + `${userAnswer}` + `.jpg`;
                 resp += `<img src='${image}'width="220" height= "220"'>`;
-                //await updateBalance(client, databaseAndCollection, player, 1);
-                //bal = await lookUpBalance(client, databaseAndCollection, player);
+                await updateBalance(client, databaseAndCollection, player, 1);
+                bal = await lookUpBalance(client, databaseAndCollection, player);
                 vars = {correct: `Correct! You have great intuition!`,
                         infoAndImages: resp,
                         balance: bal};
