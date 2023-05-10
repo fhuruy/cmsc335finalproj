@@ -1,6 +1,6 @@
 const path = require("path");
 require("dotenv");
-const cors = require('cors');
+
 const express = require("express");   /* Accessing express module */
 const app = express();  /* app is a request handler function */
 const bodyParser = require("body-parser");
@@ -15,9 +15,7 @@ if (process.argv.length != 2) {
 
 const portNumber = 4000;
 let player = "";
-app.use(cors({
-    origin: '*'
-}));
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("views", path.resolve(__dirname, "templates"));
