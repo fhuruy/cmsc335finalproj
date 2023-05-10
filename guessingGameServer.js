@@ -220,7 +220,7 @@ app.post("/answer", async (request, response) => {
 
                 resp += `<h3>The image you correctly guessed was (Number ${actualAnswer}):</h3><br>`;
                 let image = `/images/image` + `${userAnswer}` + `.jpg`;
-                resp += `<img src='${image}'width="220" height= "220"'>`;
+                resp += `<img src='${image}'width="220" height= "220">`;
                 await updateBalance(client, databaseAndCollection, player, 1);
                 bal = await lookUpBalance(client, databaseAndCollection, player);
                 vars = {correct: `Correct! You have great intuition!`,
@@ -231,9 +231,9 @@ app.post("/answer", async (request, response) => {
                 resp += `<span><h3>The image randomly chosen was (Number ${actualAnswer}): &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                 resp += `But the image you incorrectly guessed was (Number ${userAnswer}): </h3></span><br>`;
                 let actualImage = `/images/image` + `${actualAnswer}` + `.jpg`;
-                resp += `<img src='${actualImage}'width="220" height= "220"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
+                resp += `<img src='${actualImage}'width="220" height= "220">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;`;
                 let userImage = `/images/image` + `${userAnswer}` + `.jpg`;
-                resp += `<img src='${userImage}'width="220" height= "220"'>`;
+                resp += `<img src='${userImage}'width="220" height= "220">`;
                 vars = {correct:`Sorry you were incorrect, your intuition could use some work ): `,
                         infoAndImages: resp,
                         balance: bal};
