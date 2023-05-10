@@ -15,9 +15,7 @@ if (process.argv.length != 2) {
 
 const portNumber = 4000;
 let player = "";
-app.use(cors({
-    origin: '*'
-}));
+
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(express.static(path.join(__dirname, 'public')));
 app.set("views", path.resolve(__dirname, "templates"));
