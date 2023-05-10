@@ -21,7 +21,7 @@ app.set("views", path.resolve(__dirname, "templates"));
 app.set("view engine", "ejs");
 app.listen(portNumber);
 console.log(`Web server started and running at http://localhost:${portNumber}`);
-const url = `http://localhost:${portNumber}`;
+const url = `https://vast-lime-buffalo-coat.cyclic.app`;
 const prompt = "Type stop to shutdown the server: ";
 process.stdout.write(prompt);
 process.stdin.on("readable", function () {
