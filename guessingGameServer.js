@@ -111,7 +111,6 @@ async function updateBalance(client, databaseAndCollection, userName, amount) {
     if (person) {
         bal = person.balance + amount
         
-    
     // update the value of the 'balance' field to amount
     const updateDocument = {
         $set: {
@@ -123,14 +122,7 @@ async function updateBalance(client, databaseAndCollection, userName, amount) {
                         .updateOne(filter, updateDocument);
     } 
 }
-async function lookUpOneEntry(client, databaseAndCollection, userName) {
-    let filter = {name: userName};
-    const result = await client.db(databaseAndCollection.db)
-                        .collection(databaseAndCollection.collection)
-                        .findOne(filter);
-    console.log(result);
-    return result;
-}
+
 let currUser = null;
 app.get("/", (request, response) => {
     currUser = null;
